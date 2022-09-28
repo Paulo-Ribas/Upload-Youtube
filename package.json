@@ -1,0 +1,19 @@
+{
+  "name": "upload-youtube",
+  "version": "1.0.0",
+  "description": "projeto para fazer upload dos meus videos de 2019",
+  "main": "/src/peloErg.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Paulo Ribas",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "googleapis": "^108.0.0",
+    "mongoose": "^6.6.1",
+    "youtube-api": "^3.0.1"
+  }
+}
