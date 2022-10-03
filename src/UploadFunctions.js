@@ -25,15 +25,15 @@ class Youtube {
         }
         function onUploadProgress(event){
             const progress = Math.round(event.bytesRead / videoFileSize * 100)
+            if(progress === 50){
+                console.log('video em 50%')
+            }
         }
         return new Promise((resolve, reject) => {
             YTB.videos.insert(requestParameter, {onUploadProgress: onUploadProgress}, (err, data) => {
                 if(err){
-                    console.log('foi até aqui?')
-                    console.log(err)
                    return reject({title, err})
                 }
-                console.log('ou aqui?')
                 resolve({title, data})});
         })
     }

@@ -12,25 +12,25 @@ async function StartUpload(caminho, server){
         let ocamFiles = await VideosOcamFunctions.getOcamFiles(path)
         let videos = await VideosOcamFunctions.filterVideosFormat(ocamFiles)
         let video = await VideosOcamFunctions.CreateMidia(path, videos, result || 0)
-        /* await databaseFunctions.verifyVideosNotUploadated(videos[result])
-        await databaseFunctions.verifyVideosUploadated(videos[result]) */
+        await databaseFunctions.verifyVideosNotUploaded(videos[result]) 
         let uploaded = await UploadFunctions.StartUpload(video, videos[result || 0])
-        /* let VideoUplodated = await databaseFunctions.addVideoNotUploadated(videos[result || 0]) */
-        console.log('foi postado com sucesso no youtube')
+        VideoUploded = await databaseFunctions.addVideoUploaded(videos[result || 0])
+        console.log('video foi postado com sucesso no youtube')
         result = video.i
         while (result != 'done') {
             console.log('estamos no video ' + result + ' de ' + videos.length)
-            return StartUpload('C:/Users/paulo/OneDrive/Documents/oCam/', google)
+            return StartUpload('C:/Users/paulo/OneDrive/Documents/oCam/', server)
         }
         await Server.stopServer(server)
         return new Promise((resolve, reject) => {
+            console.log('finished')
             resolve()
         })
     } catch (error) {
         let ocamFiles = await VideosOcamFunctions.getOcamFiles(path)
         let videos = await VideosOcamFunctions.filterVideosFormat(ocamFiles)
         let video = await VideosOcamFunctions.CreateMidia(path, videos, result || 0)
-       /*  let VideoNotUplodated = await databaseFunctions.addVideoUploadated(videos[result || 0], error.err) */
+        let VideoNotUploded = await databaseFunctions.addVideoNotUploaded(videos[result || 0], error.err)
         console.log(' não foi postado no youtube, motivo -> ' + error.err)
         result = video.i
         while (result != 'done') {

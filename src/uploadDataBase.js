@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 let videosModel = require('../database/UploadsModel')
-let Videos = mongoose.model('videosUpload', videosModel)
+let Videos = mongoose.model('VideosUpload', videosModel)
 class databaseFunctions {
-    async addVideoUploadated(videoName){
+    async addVideoUploaded(videoName){
         let videos = await Videos.find()
         if (videos.length < 1 && videos != undefined) {
-            let video = await new Videos.model({
-                VideosUplodated:[{videoName}]
+            let video = new Videos({
+                VideosUplodated: [{ videoName }]
             })
-            await Videos.Save(video)
+            video.save(video)
             videos = await Videos.find()
         }
         else {
@@ -23,13 +23,13 @@ class databaseFunctions {
         }
     }
 
-    async addVideoNotUploadated(videoName, reason){
+    async addVideoNotUploaded(videoName, reason){
         let videos = await Videos.find()
         if (videos.length < 1 && videos != undefined) {
-            let video = await new Videos.model({
+            let video =  new Videos({
                 VideosNotUplodated: [{ videoName, reason }]
             })
-            await Videos.Save(video)
+            video.save(video)
             videos = await Videos.find()
         }
         else {
@@ -43,9 +43,8 @@ class databaseFunctions {
             }
         }
     }
-    async verifyVideosUploadated(videoName){
+    async verifyVideosUploaded(videoName){
         let videos = await Videos.find()
-        console.log(videos)
         return new Promise((resolve, reject) => {
             if (videos.length > 0) {
                 let found = videos[0].VideosUplodated.find(video => {
@@ -64,10 +63,8 @@ class databaseFunctions {
             }
         })
     }
-    async verifyVideosNotUploadated(videoName) {
-        console.log('not uploadated')
+    async verifyVideosNotUploaded(videoName) {
         let videos = await Videos.find()
-        console.log(videos)
         return new Promise((resolve, reject) => {
             if (videos.length > 0) {
                 let found = videos[0].VideosNotUplodated.find(video => {
