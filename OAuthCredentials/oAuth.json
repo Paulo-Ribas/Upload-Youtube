@@ -1,16 +1,3 @@
 {
-    "web": {
-        "client_id": "246450009824-pmfgnklv5qlo0gpm53kbpae6845a8ean.apps.googleusercontent.com",
-        "project_id": "videos-364301",
-        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-        "token_uri": "https://oauth2.googleapis.com/token",
-        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-        "client_secret": "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",
-        "redirect_uris": [
-            "http://localhost:3338/youtube"
-        ],
-        "javascript_origins": [
-            "http://localhost:3338"
-        ]
-    }
+    "replace": "add your google cloud account credentials."
 }
